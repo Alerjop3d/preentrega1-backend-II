@@ -31,7 +31,7 @@ const renderProducts = async () => {
       const adder = productCard.querySelector('.add-item');
       adder.addEventListener('click', async () => {
         try {
-          const response = await fetch(`http://localhost:8080/api/cart/product/${product.id}`, {
+          await fetch(`http://localhost:8080/api/cart/product/${product.id}`, {
             method: 'PUT',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(product)

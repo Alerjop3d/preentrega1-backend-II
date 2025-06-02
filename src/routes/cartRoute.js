@@ -9,11 +9,13 @@ const chargedCart = [];
 // ------------- Ruta GET para obtener un carrito por su ID ------------- //
 route.get('/', (req, res) => {
     res.json(chargedCart)
+    console.log('Carrito cargado:', chargedCart);
 });
 
 
 route.put('/product/:pid', (req, res) => {
     const product = req.body;
+    console.log('Producto recibido:', product);
     const existingProductIndex = chargedCart.findIndex(p => p.id === product.id);
   
     if (existingProductIndex !== -1) {

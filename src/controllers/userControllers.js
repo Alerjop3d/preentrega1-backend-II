@@ -2,7 +2,7 @@ import { User } from  '../models/userModel.js';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
-const secretKey = 'alejo2011'; // Debes reemplazar esto con una clave secreta segura
+const secretKey = 'alejo2011'; 
 
 export class UserController {
     async register(req, res) {

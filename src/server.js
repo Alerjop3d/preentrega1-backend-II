@@ -17,11 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(process.cwd(), 'src', 'public')));
 
-app.use(expressSession({
-  secret: 'tu-secreto',
-  resave: false,
-  saveUninitialized: false,
-}));
+app.use(expressSession({secret: 'tu-secreto', resave: false, saveUninitialized: false }));
 
 app.engine('hbs', handlebars.engine({extname: '.hbs'}));
 app.set('view engine', 'hbs'); 
@@ -33,8 +29,9 @@ initMongoDB()
   
   app.use('/', viewsRoutes);
   app.use('/users', userRoutes);
-  app.use('/api/products', productsRoute)
-  app.use('/api/cart', cartRoute)
+  app.use('/api/cart', cartRoute);
+  app.use('/api/products', productsRoute);
+  
 
 app.use(errorHandler);
 
