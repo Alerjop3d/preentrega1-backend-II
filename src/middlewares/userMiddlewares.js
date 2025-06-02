@@ -30,3 +30,18 @@ export const errorHandler = (error, req, res, next) => {
     const status = error.status || 500;
     res.status(status).json({ message: error.message });
 }
+
+export const authenticate = (req, res, next) => {
+    try {
+        const token = req.cookies.token;
+        if (!token) {
+            return res.status(401).send({ message: 'No se proporcionó token' });
+        }
+        
+        const decoded = jwt.verify(token, secretKey);
+        req.user = decoded;
+        next();
+    } catch (error) {
+        res.status(401).send({ message: 'Token inválido' });
+    }
+};
